@@ -1,13 +1,29 @@
 // Card.js
 import React from 'react';
 
-function Card ({ suit, rank })  {
+function Card({ suit, rank }) {
 
 
     return (
-        
-        <div className="card">
-          {rank} of {suit}
+
+
+        <div className={`card ${(suit == "♣︎" || suit == "♠︎") ? "card-black" : "card-red"}`}>
+            <div className="card-tl">
+                <div className="card-value">
+                    {value}
+                </div>
+                <div className="card-suit">
+                    {suit}
+                </div>
+            </div>
+            <div className="card-br">
+                <div className="card-value">
+                    {value}
+                </div>
+                <div className="card-suit">
+                    {suit}
+                </div>
+            </div>
         </div>
     )
 }
