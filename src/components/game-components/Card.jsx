@@ -1,5 +1,6 @@
 // Card.js
 import React from 'react';
+import '../../styles/game-components/Card.className'
 
 function Card({ suit, rank }) {
 
