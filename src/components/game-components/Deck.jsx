@@ -5,10 +5,10 @@ import Card from './Card';
 function Deck ({onClick, isDisplayed}) {
 
     return(
-        <div className='deck' onClick={onclick}>
+        <div className='deck' onClick={onClick}>
             {
                 isDisplayed &&
-                <img src='images/cards/card_back.png' alt='card_back'/>
+                <img src='images/cards/BACK.svg' alt='card_back'/>
             }
         </div>
     )
