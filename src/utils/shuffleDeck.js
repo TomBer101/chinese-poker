@@ -1,10 +1,17 @@
 function shuffleDeck(cards) {
-
+    const n = cards.length;
     // Shuffle the deck using the Fisher-Yates algorithm
-    for (let i = cards.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [deck[i], deck[j]] = [deck[j], deck[i]];
-    }
+    for (let i = 0; i < n; i++) {
+        // Random for remaining positions.
+        let r = i + (Math.floor(Math.random() * (52 - i)));
+        let tmp = cards[i];
+        cards[i] = cards[r];
+        cards[r] = tmp;
+      }
 
-    return deck;
+    return cards;
 }
+
+
+
+export default shuffleDeck;
