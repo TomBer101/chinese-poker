@@ -1,6 +1,6 @@
 // Card.js
 import React from 'react';
-import '../../styles/game-components/Card.className'
+import '../../styles/game-components/Card.css'
 
 function Card({ suit, rank }) {
 
@@ -8,10 +8,10 @@ function Card({ suit, rank }) {
     return (
 
 
-        <div className={`card ${(suit == "♣︎" || suit == "♠︎") ? "card-black" : "card-red"}`}>
+        <div className={`card ${suit === "♣︎" || suit === "♠︎" ? "card-black" : "card-red"}`}>
             <div className="card-tl">
                 <div className="card-value">
-                    {value}
+                    {rank}
                 </div>
                 <div className="card-suit">
                     {suit}
@@ -19,7 +19,7 @@ function Card({ suit, rank }) {
             </div>
             <div className="card-br">
                 <div className="card-value">
-                    {value}
+                    {rank}
                 </div>
                 <div className="card-suit">
                     {suit}
