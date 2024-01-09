@@ -2,7 +2,7 @@
 import React from 'react';
 import '../../styles/game-components/Card.css'
 
-function Card({ suit, rank, flip, children }) {
+function Card({ suit, rank, flip, laneID, children }) {
 
     const isDiamond = suit === '◆';
 

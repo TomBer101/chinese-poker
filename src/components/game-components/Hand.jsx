@@ -1,15 +1,20 @@
 import React from "react";
 import Card from "./Card";
-import { Stack } from "react-bootstrap";
 
-function Hand({cards}) {
+function Hand({cards, listID}) {
+
+    if (!cards.length) {
+        return <Card suit='' rank='' />
+    }
+
+    const [first, ...rest] = cards;
 
     return (
-        <Stack>
-            {
-                
-            }
-        </Stack>
+        <div className="card-list">
+            <Card key={index} suit={card.suit} laneID={listID} rank={card.rank} flip={index === 4? true : false} >
+                {!!rest.length && <Hand cards={rest} listID={listID}/> }
+            </Card>
+        </div>
     )
 }
 
