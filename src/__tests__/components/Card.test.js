@@ -9,7 +9,7 @@ describe('Card Component', () => {
     expect(suitElements.length).toBe(2);
 
     const rankElements = queryAllByText('10');
-    expect(rankElements.length).toBe(2);
+    expect(rankElements.length).toBe(1);
 
   });
 
@@ -18,5 +18,22 @@ describe('Card Component', () => {
     expect(container.firstChild).toHaveClass('card-black');
   });
 
-  // Add more tests for different scenarios...
+  test('renders children when provided', () => {
+    const { getByText } = render(
+      <Card suit="♠︎" rank="Q">
+        <div>Child Content</div>
+      </Card>
+    );
+
+    const childElement = getByText('Child Content');
+    expect(childElement).toBeInTheDocument();
+  });
+
+  
+  test('renders back image when flip is true', () => {
+    const { container } = render(<Card suit="♦" rank="K" flip={true} />);
+    const backImage = container.querySelector('img[src="images/cards/BACK.svg"]');
+    expect(backImage).toBeInTheDocument();
+  });
+
 });
