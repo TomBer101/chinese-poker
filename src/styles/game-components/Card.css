@@ -49,3 +49,56 @@ input[type=button] {
   color: white;
   text-transform: uppercase;
 }
+
+/*---------------------------*/
+.card-content {
+  height: 100%;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px;
+  background-color: #eee;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.3rem 0.6rem;
+  font-weight: bold;
+  font-size: 24px;
+}
+.card-header span:last-child {
+  position: relative;
+  font-size: 2rem;
+  top: -2px;
+}
+
+.card-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-body .icon {
+  position: relative;
+  top: -12px;
+  font-size: 6rem;
+}
+
+.card-child {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: -70%;  
+}
+
+.card-bucket {
+  position: relative;
+  top: -70%;
+  height: 70%;
+}
+
+/* fix diamond position */
+.diamond {
+  top: -30px !important;
+}
