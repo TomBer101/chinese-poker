@@ -15,7 +15,7 @@ describe('Card Component', () => {
 
   test('renders black card for ♣︎ or ♠︎', () => {
     const { container } = render(<Card suit="♣︎" rank="A" />);
-    expect(container.firstChild).toHaveClass('card-black');
+    expect(container.firstChild.firstChild).toHaveClass('card-black');
   });
 
   test('renders children when provided', () => {

@@ -1,20 +1,26 @@
 import React from "react";
 import Card from "./Card";
+import { Stack } from "react-bootstrap";
 
 function Hand({cards, listID}) {
 
     if (!cards.length) {
-        return <Card suit='' rank='' />
+        return <Card key='none' suit='' rank='' />
     }
 
     const [first, ...rest] = cards;
 
     return (
-        <div className="card-list">
-            <Card key={index} suit={card.suit} laneID={listID} rank={card.rank} flip={index === 4? true : false} >
-                {!!rest.length && <Hand cards={rest} listID={listID}/> }
-            </Card>
-        </div>
+        <Stack className="cards-list">
+            {
+                cards.map((card, index) => {
+                    return (<div key={index} className="card-holder" style={{top: `${-22 * index}px`}}>
+                        <Card flip={index==4} laneID={listID} rank={card.rank} suit={card.suit} key={index} />
+                    </div>
+                    )
+                })
+            }
+        </Stack>
     )
 }
 
