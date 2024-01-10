@@ -226,3 +226,7 @@ function checkFlush(suitMatch) {
 
     else return false
 }
+
+export function canPlayerPlay(player) {
+    // TODO: Check if the player that tried to Click, is allowed to play.
+}

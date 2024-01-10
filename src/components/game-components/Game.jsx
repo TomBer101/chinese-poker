@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import useSound from useSound;
+
+
+import Deck from "./Deck";
+import Card from "./Card";
 import Cards from '../../utils/deck';
 import shuffleDeck from '../../utils/shuffleDeck';
-
 import shufflingSound from '../../assets/sounds/shuffling-cards-1.mp3';
-import cardFlipSound from '../../assets/sounds/card-flip.mp3';
+
+
 import { Container } from "react-bootstrap";
+
 
 
 
@@ -16,22 +21,14 @@ function Game() {
     const [turn, setTurn] = useState(-1);
     const [numberOfTurns, setNumberOfTurns] = useState(-1);
     const [gameDeck, setGameDeck] = useState(null);
+    const [currentCard, setCurrentCard] = useState(null); // New state for the current card
     const [playerHands, setPlayerHands] = useState([[[], [], [], [], []], [[], [], [], [], []]]);
 
     const [playShufflingSound] = useSound(shufflingSound);
-    const [cardFlipSound] = useSound(shufflingSound);
 
     const currentPlayerRole = 'player1';
 
-    const addCardToHand = (playerIndex, handIndex, card) => {
-        setPlayerHands(prevHands => {
-            const newHands = [...prevHands];
-            newHands[playerIndex][handIndex].push(card);
-            return newHands;
-        });
-    };
-
-    useEffect(() => {
+    useEffect(() => { // Init
         const shuffledCards = shuffleDeck(Cards);
         const player1Cards = shuffledCards.splice(0, 5);
         const player2Cards = shuffledCards.splice(0, 5);
@@ -42,6 +39,22 @@ function Game() {
             addCardToHand(1, i, player2Cards[i]);
         }
     }, []);
+
+    const addCardToHand = (playerIndex, handIndex, card) => {
+        setPlayerHands(prevHands => {
+            const newHands = [...prevHands];
+            newHands[playerIndex][handIndex].push(card);
+            return newHands;
+        });
+    };
+
+    const handleDeckClick = () => {
+
+        const updatedGameDeck = [...gameDeck];
+        const drawnCard = updatedGameDeck.pop();
+        setCurrentCard(drawnCard);
+        setGameDeck(updatedGameDeck);
+    }
 
 
     return (
@@ -102,13 +115,8 @@ function Game() {
 
                 {/* Right column - Deck of cards */}
                 <Col md="auto" className="float-right">
-                    <Card style={{ width: '10rem' }}>
-                        <Card.Body>
-                            <Card.Title>Deck</Card.Title>
-                            <Card.Text>Remaining Cards: {gameDeck.length}</Card.Text>
-                            <Button variant="primary">Draw Card</Button>
-                        </Card.Body>
-                    </Card>
+                    <Deck amountOfCards={gameDeck.length} onClick={handleDeckClick}/>
+                    {drawnCard && <Card flip={false} laneID={-1} suit={drawnCard.suit} rank={drawnCard.rank}/>}
                 </Col>
             </Container>
         </div>

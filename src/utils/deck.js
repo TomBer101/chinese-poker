@@ -1,4 +1,4 @@
-export default [
+export default cards =  [
     {
       "suit": "♥︎",
       "value": 2
