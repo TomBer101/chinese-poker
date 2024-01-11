@@ -1,4 +1,4 @@
-export default cards =  [
+const cards =  [
     {
       "suit": "♥︎",
       "value": 2
@@ -208,3 +208,5 @@ export default cards =  [
       "value": "A"
     }
   ]
+
+  export default cards;

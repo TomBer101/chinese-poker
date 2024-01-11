@@ -1,15 +1,15 @@
 // Deck.js
 import React from 'react';
-import Card from './Card';
 
 import cardFlipSound from '../../assets/sounds/card-flip.mp3';
 
 function Deck({ onClick, amountOfCards }) {
 
-    const [playcardFlipSound] = useSound(cardFlipSound);
+    //const [playcardFlipSound] = useSound(cardFlipSound);
+    const playCardFlipSong = new Audio(cardFlipSound);
 
     const handleOnClick = () => {
-        playcardFlipSound();
+        playCardFlipSong.play();
         onClick();
     }
 
