@@ -4,8 +4,9 @@ import { Card, Container, Row, Col } from "react-bootstrap";
 
 import Deck from "./Deck";
 import {default as GameCard} from "./Card";
+import Player from './Player';
 // import cards from '../../utils/deck';
-//import shuffleDeck from '../../utils/shuffleDeck';
+import shuffleDeck from '../../utils/shuffleDeck';
 import shufflingSound from '../../assets/sounds/shuffling-cards-1.mp3';
 import '../../styles/game-components/Game.css'
 
@@ -59,55 +60,16 @@ function Game() {
             <Container fluid>
                 {/* Top row - Opponent's cards */}
                 <Row className="mt-4">
-                    {currentPlayerRole === 'player1'
-                        ? playerHands[1].map((card, index) => (
-                            <Col key={index} className="mb-3 card-slot">
-                                <Card>
-                                    <Card.Body>
-                                        <Card.Title>{card.rank}</Card.Title>
-                                        <Card.Subtitle className="mb-2 text-muted">{card.suit}</Card.Subtitle>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        ))
-                        : playerHands[0].map((card, index) => (
-                            <Col key={index} className="mb-3 card-slot">
-                                <Card>
-                                    {/* Render your card content here */}
-                                    <Card.Body>
-                                        <Card.Title>{card.rank}</Card.Title>
-                                        <Card.Subtitle className="mb-2 text-muted">{card.suit}</Card.Subtitle>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        ))}
+                    {
+                        currentPlayerRole === 'player1' ? <Player hands={playerHands[1]} key={1} /> : <Player hands={playerHands[0] } key={1}/>
+                    }
                 </Row>
 
                 {/* Bottom row - Current player's cards */}
                 <Row>
-                    {currentPlayerRole === 'player1'
-                        ? playerHands[0].map((card, index) => (
-                            <Col key={index} className="mb-3 card-slot">
-                                <Card>
-                                    {/* Render your card content here */}
-                                    <Card.Body>
-                                        <Card.Title>{card.rank}</Card.Title>
-                                        <Card.Subtitle className="mb-2 text-muted">{card.suit}</Card.Subtitle>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        ))
-                        : playerHands[1].map((card, index) => (
-                            <Col key={index} className="mb-3 card-slot">
-                                <Card>
-                                    {/* Render your card content here */}
-                                    <Card.Body>
-                                        <Card.Title>{card.rank}</Card.Title>
-                                        <Card.Subtitle className="mb-2 text-muted">{card.suit}</Card.Subtitle>
-                                    </Card.Body>
-                                </Card>
-                            </Col>
-                        ))}
+                    {
+                        currentPlayerRole === 'player1' ? <Player hands={playerHands[0]} key={0} /> : <Player hands={playerHands[1] } key={0}/>
+                    }
                 </Row>
 
                 {/* Right column - Deck of cards */}

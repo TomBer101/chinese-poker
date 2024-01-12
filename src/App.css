@@ -1,6 +1,13 @@
 .App {
   text-align: center;
-  background-color: green;
+  height: 100vh;
+  padding-top: 1px;
+  background: url("../public/images/utils/green_back.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .App-logo {
