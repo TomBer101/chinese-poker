@@ -1,6 +1,7 @@
 // Card.js
 import React from 'react';
 import '../../styles/game-components/Card.css'
+import cardInfo from '../../utils/cardsInfo.json';
 
 function Card({ suit, rank, flip, laneID, children }) {
 
@@ -8,31 +9,25 @@ function Card({ suit, rank, flip, laneID, children }) {
 
     return (
 
-        <div className='card-container'>
-            <div className={`card ${suit === "♣︎" || suit === "♠︎" ? "card-black" : "card-red"}`} data-testid={`card-${rank}-${suit}`}>
+        
+            <div className={`game-card`} data-testid={`card-${rank}-${suit}`}>
                 {flip ? (
-                    <div>
+                    <div className='game-card'>
                         <img src='images/cards/BACK.svg' alt='card_back' />
                     </div>
                 ) : (
-                    <div className='card-content'>
-                        <div className='card-header'>
-                            <span data-testid={`rank-${rank}`}>{rank}</span>
-                            <span data-testid={`suit-${suit}`}>{suit}</span>
+                    <div className='card-content card__rank-left' data-testid={`rank-${rank}`}>
+                        {rank}
+                        <div className='card__content card__suit-left' data-testid={`suit-${suit}`}> 
+                            {cardInfo["symbol"][suit]}
                         </div>
-                        <div className='card-body'>
-                            <span className={`icon ${isDiamond ? 'diamond' : ''}`}>
-                                {suit}
-                            </span>
+                        <div className='card__content card__suit-right' data-testid={`suit-${suit}`}>
+                            {cardInfo["symbol"][suit]}
                         </div>
+                        <div className="card__content card__rank-right" data-testid={`rank-${rank}`}>{rank}</div>
                     </div>
                 )}
-                {children && <div className='card-child'>{children}</div>}
-                {!children && (
-                    <div className='card-bucket' />
-                )}
             </div>
-        </div>
 
     );
 };
