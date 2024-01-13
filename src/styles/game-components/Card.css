@@ -29,12 +29,12 @@
   margin-right: 0.4vw;
 }
 
-.card__suite-left {
+.card__suit-left {
   text-align: left;
   margin-left: 0.2vw;
 }
 
-.card__suite-right {
+.card__suit-right {
   text-align: left;
   position: relative;
   transform: rotate(180deg);
