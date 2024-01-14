@@ -1,44 +1,39 @@
 // Card.js
 import React from 'react';
 import '../../styles/game-components/Card.css'
+import cardInfo from '../../utils/cardsInfo.json';
 
-function Card({ suit, rank, flip, laneID, children }) {
+function Card({ flip, laneID, children }) {
 
-    const isDiamond = suit === '◆';
+    const value = "A";
+    const suit = "♣︎";
 
-    return (
-
-        <div className='card-container'>
-            <div className={`card ${suit === "♣︎" || suit === "♠︎" ? "card-black" : "card-red"}`} data-testid={`card-${rank}-${suit}`}>
-                {flip ? (
-                    <div>
-                        <img src='images/cards/BACK.svg' alt='card_back' />
-                    </div>
-                ) : (
-                    <div className='card-content'>
-                        <div className='card-header'>
-                            <span data-testid={`rank-${rank}`}>{rank}</span>
-                            <span data-testid={`suit-${suit}`}>{suit}</span>
-                        </div>
-                        <div className='card-body'>
-                            <span className={`icon ${isDiamond ? 'diamond' : ''}`}>
-                                {suit}
-                            </span>
-                        </div>
-                    </div>
-                )}
-                {children && <div className='card-child'>{children}</div>}
-                {!children && (
-                    <div className='card-bucket' />
-                )}
+    if (flip) {
+        return (
+            <div className='game-card'>
+                <img src='images/cards/BACK.svg' alt='card_back' />
             </div>
-        </div>
-
-    );
-};
-
-
-
+        )
+    }
+    return (
+        <div className={`game-card ${(suit === "♣︎" || suit === "♠︎") ? 'card-black' : 'card-red'}`} data-testid={`card-${value}-${suit}`}>
+            <div className="card-tl">
+                <div className="card-value" data-testid={`rank-${value}`}>
+                    {value}
+                </div><div className="card-suit" data-testid={`suit-${suit}`}>
+                    {suit}
+                </div>
+            </div>
+            <div className="card-br">
+                <div className="card-value" data-testid={`rank-${value}`}>
+                    {value}
+                </div>
+                <div className="card-suit" data-testid={`suit-${suit}`}>
+                    {suit}
+                </div>
+            </div>
+        </div>);    
+}
 
 
 export default Card;
