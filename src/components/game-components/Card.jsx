@@ -5,8 +5,8 @@ import cardInfo from '../../utils/cardsInfo.json';
 
 function Card({ flip, laneID, children }) {
 
-    const value = "A";
-    const suit = "♣︎";
+    const value = "1";
+    const suit = "c";
 
     if (flip) {
         return (
@@ -16,24 +16,14 @@ function Card({ flip, laneID, children }) {
         )
     }
     return (
-        <div className={`game-card ${(suit === "♣︎" || suit === "♠︎") ? 'card-black' : 'card-red'}`} data-testid={`card-${value}-${suit}`}>
-            <div className="card-tl">
-                <div className="card-value" data-testid={`rank-${value}`}>
-                    {value}
-                </div><div className="card-suit" data-testid={`suit-${suit}`}>
-                    {suit}
-                </div>
-            </div>
-            <div className="card-br">
-                <div className="card-value" data-testid={`rank-${value}`}>
-                    {value}
-                </div>
-                <div className="card-suit" data-testid={`suit-${suit}`}>
-                    {suit}
-                </div>
-            </div>
-        </div>);    
+        <div className={`game-card`} data-testid={`card-${value}-${suit}`}>
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100">
+                    <image href={`${process.env.PUBLIC_URL}/images/cards/${value}${suit}.svg`} width="100%" height="100%" />
+                </svg>
+            </span>
+        </div>
+    );
 }
-
 
 export default Card;
