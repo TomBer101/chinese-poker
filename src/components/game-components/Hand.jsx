@@ -15,7 +15,7 @@ function Hand({cards, listID}) {
             {
                 cards.map((card, index) => {
                     return (<div key={index} className="card-holder" style={{top: `${-22 * index}px`}}>
-                        <Card flip={index==4} laneID={listID} rank={card.rank} suit={card.suit} key={index} />
+                        <Card flip={index==4} laneID={listID} value={card.value} suit={card.suit} key={index} />
                     </div>
                     )
                 })
