@@ -3,10 +3,7 @@ import React from 'react';
 import '../../styles/game-components/Card.css'
 import cardInfo from '../../utils/cardsInfo.json';
 
-function Card({ flip, laneID, children }) {
-
-    const value = "1";
-    const suit = "c";
+function Card({ value, suit, flip, laneID, children }) {
 
     if (flip) {
         return (
