@@ -5,8 +5,8 @@ import cardInfo from '../../utils/cardsInfo.json';
 
 function Card({ flip, laneID, children }) {
 
-    const rank = "A";
-    const suit = "heart";
+    const value = "A";
+    const suit = "♣︎";
 
     if (flip) {
         return (
@@ -16,27 +16,24 @@ function Card({ flip, laneID, children }) {
         )
     }
     return (
-        <div className={`game-card ${suit}`} data-testid={`card-${rank}-${suit}`}>
-            <div className='card-content card__rank-left' data-testid={`rank-${rank}`}>
-                {rank}
+        <div className={`game-card ${(suit === "♣︎" || suit === "♠︎") ? 'card-black' : 'card-red'}`} data-testid={`card-${value}-${suit}`}>
+            <div className="card-tl">
+                <div className="card-value" data-testid={`rank-${value}`}>
+                    {value}
+                </div><div className="card-suit" data-testid={`suit-${suit}`}>
+                    {suit}
+                </div>
             </div>
-            <div className='card__content card__suit-left' data-testid={`suit-${suit}`}>
-                {cardInfo["symbol"][suit]}
+            <div className="card-br">
+                <div className="card-value" data-testid={`rank-${value}`}>
+                    {value}
+                </div>
+                <div className="card-suit" data-testid={`suit-${suit}`}>
+                    {suit}
+                </div>
             </div>
-            <div className='card__content card__suit-right' data-testid={`suit-${suit}`}>
-                {cardInfo["symbol"][suit]}
-            </div>
-            <div className="card__content card__rank-right" data-testid={`rank-${rank}`}>
-                {rank}
-            </div>
-        </div>
-    )
+        </div>);    
 }
-
-
-
-
-
 
 
 export default Card;

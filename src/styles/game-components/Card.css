@@ -1,130 +1,51 @@
 .game-card {
-  /* display: flex;
+  display: flex;
   width: 48px;
   height: 80px;
   background-color: #FFF;
   border-radius: 8px;
   border: 1px solid black;
   margin: 16px;
-  padding: 4px; */
-
-  position: relative;
-  border: 1px solid black;
-  cursor: pointer;
-  width: 5rem;
-  height: 8rem;
-  border-radius: 0.3vw;
+  padding: 4px;
 }
 
-.card__rank-left {
-  text-align: left;
-  margin-left: 0.2vw;
-}
-
-.card__rank-right {
-  text-align: left;
-  position: relative;
-  transform: rotate(180deg);
-  top: 4.7vw;
-  margin-right: 0.4vw;
-}
-
-.card__suit-left {
-  text-align: left;
-  margin-left: 0.2vw;
-}
-
-.card__suit-right {
-  text-align: left;
-  position: relative;
-  transform: rotate(180deg);
-  top: 4.7vw;
-  margin-right: 0.4vw;
-}
-
-.card__suite {
-  text-align: center;
-}
-
-.heart {
-  background: url("../../../public/images/cards/heart.png") #ffffff;
-  color: red;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 50%;
-}
-.spade {
-  background: url("../../../public/images/cards/spade.png") #ffffff;
+.card-black {
   color: black;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 50%;
 }
-.club {
-  background: url("../../../public/images/cards/club.png") #ffffff;
-  color: black;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 50%;
-}
-.diamond {
-  background: url("../../../public/images/cards/diamond.png") #ffffff;
+
+.card-red {
   color: red;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 50%;
 }
 
-@media screen and (max-width: 1390px) and (min-width: 1200px) {
-  .card__content {
-    font-size: 12px;
-  }
-  .card__selected {
-    border: 2px solid red;
-    box-shadow: none !important;
-  }
-  .card__highlighted {
-    border: 2px solid palevioletred;
-    box-shadow: none !important;
-  }
+.card-value {
+  font-size: 16px;
 }
 
-@media screen and (max-width: 1199px) and (min-width: 781px) {
-  .card__content {
-    font-size: 9px;
-  }
-  .card__selected {
-    border: 2px solid red;
-    box-shadow: none !important;
-  }
-  .card__highlighted {
-    border: 2px solid palevioletred;
-    box-shadow: none !important;
-  }
+.card-suit {
+  font-size: 8px;
 }
 
-@media screen and (max-width: 780px) {
-  .card__content {
-    font-size: 7.5px;
-  }
-  .card__selected {
-    border: 2px solid red;
-    box-shadow: none !important;
-  }
-  .card__highlighted {
-    border: 2px solid palevioletred;
-    box-shadow: none !important;
-  }
+.card-tl {
+  display: flex;
+  flex-grow: 1;
+  flex-flow: column nowrap;
+  align-items: flex-start;
 }
 
-/*****************/
+.card-br {
+  display: flex;
+  flex-grow: 1;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  transform:rotate(-180deg);
+}
 
-
-
-
-
-
-
-
-
-
+input[type=button] {
+  padding: 8px 16px;
+  margin: 16px;
+  border-radius: 8px;
+  background-color: red;
+  border: 1px solid white;
+  color: white;
+  text-transform: uppercase;
+}
