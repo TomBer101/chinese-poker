@@ -23,7 +23,7 @@ function Game() {
     const [playerHands, setPlayerHands] = useState([[[], [], [], [], []], [[], [], [], [], []]]);
     const playShufflingSound = new Audio(shufflingSound);
 
-    const currentPlayerRole = 'player1';
+    const currentPlayerRole = 'player1'; // the player at this client.
 
 
 
@@ -50,7 +50,6 @@ function Game() {
 
 
     const handleDeckClick = () => {
-
         const updatedGameDeck = [...gameDeck];
         const drawnCard = updatedGameDeck.pop();
         setCurrentCard(drawnCard);
@@ -67,7 +66,7 @@ function Game() {
                             : <Player hands={playerHands[0]} key={1} />}
                     </Col>
                     <Col className="float-end">
-                        {gameDeck && <Deck amountOfCards={gameDeck.length} onClick={handleDeckClick} />}
+                        {gameDeck && <Deck amountOfCards={gameDeck.length} onClick={handleDeckClick} currentCard={currentCard}/>}
                     </Col>
                 </Row>
                 <Row>
@@ -76,8 +75,8 @@ function Game() {
                             <Player hands={playerHands[1]} key={0} />}
                     </Col>
                     <Col className="float-end ">
-                        
-                          {currentCard?  <GameCard flip={false} laneID={-1} suit={currentCard.suit} rank={currentCard.rank} /> :<div className={`card-placeholder`}></div> }
+                            {/* currentCard is displayed to current client! */}
+                          {currentCard?  <GameCard flip={false} laneID={-1} suit={currentCard.suit} value={currentCard.value} /> :<div className={`card-placeholder`}></div> }
                     </Col>
                 </Row>
             </Container>
