@@ -12,6 +12,11 @@
   background-repeat: no-repeat;
 }
 
+.game-card img {
+  height: 100%;
+  width: 100%;
+}
+
 .card-black {
   color: black;
 }

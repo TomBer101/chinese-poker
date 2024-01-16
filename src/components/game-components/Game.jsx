@@ -3,7 +3,7 @@ import { Card, Container, Row, Col } from "react-bootstrap";
 
 
 import Deck from "./Deck";
-import {default as GameCard} from "./Card";
+import { default as GameCard } from "./Card";
 import Player from './Player';
 import populateCards from '../../utils/populateCards';
 import cardsInfo from '../../utils/cardsInfo.json';
@@ -20,8 +20,7 @@ function Game() {
     const [numberOfTurns, setNumberOfTurns] = useState(-1);
     const [gameDeck, setGameDeck] = useState([]);
     const [currentCard, setCurrentCard] = useState(null); // New state for the current card
-    const [playerHands, setPlayerHands] = useState([[[],[],[],[],[]], [[],[],[],[],[]]]);
-    console.log(cardsInfo);
+    const [playerHands, setPlayerHands] = useState([[[], [], [], [], []], [[], [], [], [], []]]);
     const playShufflingSound = new Audio(shufflingSound);
 
     const currentPlayerRole = 'player1';
@@ -33,21 +32,21 @@ function Game() {
             const cards = populateCards();
             const player1Cards = cards.splice(0, 5);
             const player2Cards = cards.splice(0, 5);
-            
-      setPlayerHands(prevHands => {
-    const newHands = prevHands.map((playerHands, playerIndex) =>
-      playerHands.map((hand, handIndex) => {
-        const card = (playerIndex === 0) ? player1Cards[handIndex] : player2Cards[handIndex];
-        return [card]; // Each most inner array contains one card
-      })
-    );
-    return newHands;
-  });
+
+            setPlayerHands(prevHands => {
+                const newHands = prevHands.map((playerHands, playerIndex) =>
+                    playerHands.map((hand, handIndex) => {
+                        const card = (playerIndex === 0) ? player1Cards[handIndex] : player2Cards[handIndex];
+                        return [card]; // Each most inner array contains one card
+                    })
+                );
+                return newHands;
+            });
             setGameDeck(cards);
         }
 
 
-      }, []);
+    }, []);
 
 
     const handleDeckClick = () => {
@@ -63,22 +62,24 @@ function Game() {
         <div className="game-container">
             <Container fluid>
                 <Row className="mt-4 component">
-                    {
-                        currentPlayerRole === 'player1' ? <Player hands={playerHands[1]} key={1} /> : 
-                                                        <Player hands={playerHands[0] } key={1}/>
-                    }
+                    <Col>
+                        {currentPlayerRole === 'player1' ? <Player hands={playerHands[1]} key={1} /> 
+                            : <Player hands={playerHands[0]} key={1} />}
+                    </Col>
+                    <Col className="float-end">
+                        {gameDeck && <Deck amountOfCards={gameDeck.length} onClick={handleDeckClick} />}
+                    </Col>
                 </Row>
                 <Row>
-                    {
-                        currentPlayerRole === 'player1' ? <Player hands={playerHands[0]} key={0} /> : 
-                                                        <Player hands={playerHands[1] } key={0}/>
-                    }
+                    <Col>
+                    {currentPlayerRole === 'player1' ? <Player hands={playerHands[0]} key={0} /> :
+                            <Player hands={playerHands[1]} key={0} />}
+                    </Col>
+                    <Col className="float-end ">
+                        
+                          {currentCard?  <GameCard flip={false} laneID={-1} suit={currentCard.suit} rank={currentCard.rank} /> :<div className={`card-placeholder`}></div> }
+                    </Col>
                 </Row>
-
-                <Col md="auto" className="float-right">
-                    {gameDeck && <Deck amountOfCards={gameDeck.length} onClick={handleDeckClick}/>}
-                    {currentCard && <GameCard flip={false} laneID={-1} suit={currentCard.suit} rank={currentCard.rank}/>}
-                </Col>
             </Container>
         </div>
     )
