@@ -60,7 +60,7 @@ function Game() {
     return (
         <div className="game-container">
             <Container fluid>
-                <Row className="mt-4 component">
+                <Row className="mb-3 component">
                     <Col>
                         {currentPlayerRole === 'player1' ? <Player hands={playerHands[1]} key={1} /> 
                             : <Player hands={playerHands[0]} key={1} />}
