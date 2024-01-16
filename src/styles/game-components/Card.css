@@ -1,8 +1,9 @@
 .game-card {
-
   display: block;
   width: 80px;
   height: 116px;
+
+
 }
 
 .game-card span {
@@ -14,46 +15,9 @@
 
 .game-card img {
   height: 100%;
-  width: 100%;
+  border: 0.1em solid black;
+  border-radius: 9%;
 }
 
-.card-black {
-  color: black;
-}
 
-.card-red {
-  color: red;
-}
 
-.card-value {
-  font-size: 16px;
-}
-
-.card-suit {
-  font-size: 8px;
-}
-
-.card-tl {
-  display: flex;
-  flex-grow: 1;
-  flex-flow: column nowrap;
-  align-items: flex-start;
-}
-
-.card-br {
-  display: flex;
-  flex-grow: 1;
-  flex-flow: column nowrap;
-  justify-content: flex-start;
-  transform:rotate(-180deg);
-}
-
-input[type=button] {
-  padding: 8px 16px;
-  margin: 16px;
-  border-radius: 8px;
-  background-color: red;
-  border: 1px solid white;
-  color: white;
-  text-transform: uppercase;
-}
