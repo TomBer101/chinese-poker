@@ -61,11 +61,11 @@ function Game() {
         <div className="game-container">
             <Container fluid>
                 <Row className="mb-3 component">
-                    <Col>
+                    <Col style={{transform: 'rotate(180deg)'}}>
                         {currentPlayerRole === 'player1' ? <Player hands={playerHands[1]} key={1} /> 
                             : <Player hands={playerHands[0]} key={1} />}
                     </Col>
-                    <Col className="float-end">
+                    <Col className="float-end" style={{transform: 'rotate(180deg)'}}>
                         {gameDeck && <Deck amountOfCards={gameDeck.length} onClick={handleDeckClick} currentCard={currentCard}/>}
                     </Col>
                 </Row>

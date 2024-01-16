@@ -2,6 +2,8 @@ import React from "react";
 import Card from "./Card";
 import { Stack } from "react-bootstrap";
 
+import '../../styles/game-components/Hand.css';
+
 function Hand({cards, listID}) {
 
     if (!cards.length) {
@@ -14,7 +16,7 @@ function Hand({cards, listID}) {
         <Stack className="cards-list">
             {
                 cards.map((card, index) => {
-                    return (<div key={index} className="card-holder" style={{top: `${-22 * index}px`}}>
+                    return (<div key={index} className="card-holder" style={{top: `${-85 * index}px`}}>
                         <Card flip={index==4} laneID={listID} value={card.value} suit={card.suit} key={index} />
                     </div>
                     )
