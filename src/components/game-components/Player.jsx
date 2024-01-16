@@ -11,11 +11,11 @@ function Player({ hands }) {
         <div className='player-hands'>
 
                 <Stack direction="horizontal" gap={3}>
-                    <Hand listID={0} cards={hands[0]} key={0}/>
-                    <Hand listID={1} cards={hands[1]} key={1}/>
-                    <Hand listID={2} cards={hands[2]} key={2}/>
-                    <Hand listID={3} cards={hands[3]} key={3}/>
-                    <Hand listID={4} cards={hands[4]} key={4}/>
+                    {
+                        hands.map((hand, index) => {
+                            return <Hand listID={index} cards={hand} key={index} />
+                        })
+                    }
                 </Stack>
 
 
