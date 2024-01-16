@@ -15,7 +15,7 @@ function Deck({ onClick, amountOfCards }) {
 
     if (amountOfCards !== 0) {
         return (
-            <div className='deck' onClick={handleOnClick}>
+            <div className='deck game-card' onClick={handleOnClick}>
                 <img src='images/cards/BACK.svg' alt='card_back' />
             </div>
         )
